@@ -2,6 +2,9 @@ package me.didik.helloworld.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import me.didik.helloworld.SessionManager;
 
 /**
  * Created by didik on 12/13/16.
@@ -59,4 +62,8 @@ public class Person implements Parcelable {
             return new Person[size];
         }
     };
+
+    public static void printSessionManager(){
+        Log.d("isisession", SessionManager.getInstance().getEmail());
+    }
 }

@@ -17,10 +17,19 @@ public class SessionManager {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private static SessionManager instance;
 
-    public SessionManager(Context context) {
+    private SessionManager(Context context) {
         sharedPreferences = context.getSharedPreferences(AUTH_PREFERENCES, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+    }
+
+    public static void init(Context context) {
+        instance = new SessionManager(context);
+    }
+
+    public synchronized static SessionManager getInstance() {
+        return instance;
     }
 
     public void setLogin(Person person) {

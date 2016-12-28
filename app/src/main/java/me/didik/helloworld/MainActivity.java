@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sessionManager = new SessionManager(this);
+        // Singleton
+        sessionManager = SessionManager.getInstance();
         if (sessionManager.isLoggedin()) openDashboard();
 
         setContentView(R.layout.activity_main);
