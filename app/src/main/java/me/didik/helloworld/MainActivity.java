@@ -42,6 +42,34 @@ public class MainActivity extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
 
+        if (email.isEmpty()){
+            etEmail.setError("Email cannot be blank");
+            etEmail.requestFocus();
+
+            return;
+        }
+
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            etEmail.setError("Email is not valid");
+            etEmail.requestFocus();
+
+            return;
+        }
+
+        if (password.isEmpty()){
+            etPassword.setError("Password cannot be blank");
+            etPassword.requestFocus();
+
+            return;
+        }
+
+        if (password.length() < 8){
+            etPassword.setError("Password must have 8 characters.");
+            etPassword.requestFocus();
+
+            return;
+        }
+
         if (email.equalsIgnoreCase("didik@me.xyz") && password.equals("password")) {
             Toast.makeText(MainActivity.this, "Login success", Toast.LENGTH_SHORT).show();
 
